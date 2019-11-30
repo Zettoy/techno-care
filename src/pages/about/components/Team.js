@@ -7,10 +7,6 @@ import Paper from "../../../util/Paper";
 import teamMembers from "../config/teamMembers";
 
 const useStyles = createUseStyles(theme => ({
-  root: {
-    backgroundColor: theme.palette.background.secondary,
-    color: theme.palette.text.primary
-  },
   body: {
     display: 'grid',
     gridGap: '20px',
@@ -31,7 +27,7 @@ function Team() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="secondary">
+    <Paper color="secondary">
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           OUR TEAM

@@ -14,9 +14,6 @@ const useStyles = createUseStyles(theme => ({
     '87.5%': { transform: `translateX(-${theme.screenSize.md})` },
     '100%': { transform: 'translateX(0)' }
   },
-  root: {
-    color: theme.palette.text.primary,
-  },
   body: {
     width: theme.screenSize.md,
     margin: 'auto',
@@ -48,7 +45,7 @@ function Testimonials() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="secondary">
+    <Paper color="secondary">
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           TESTIMONIALS

@@ -6,7 +6,17 @@ export default {
     lg: '1280px',
     xl: '1920px',
   },
-  palette: {
+  light: {
+    text: {
+      primary: 'black'
+    },
+    background: {
+      primary: 'white',
+      secondary: 'white',
+      hover: 'darkgrey'
+    }
+  },
+  dark: {
     text: {
       primary: 'white'
     },
@@ -15,6 +25,9 @@ export default {
       secondary: '#323232',
       hover: '#4c4c4c'
     }
+  },
+  palette: {
+
   },
   elevation: {
     '1': '0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24)',

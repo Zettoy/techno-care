@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { createUseStyles } from 'react-jss';
+import { createUseStyles, useTheme } from 'react-jss';
 
 import Paper from '../util/Paper';
 import logo from '../assets/logo.png';
@@ -14,7 +14,6 @@ const useStyles = createUseStyles(theme => ({
     height: '4.5rem',
     width: '100%',
   },
-
   logo: {
     boxSizing: 'border-box',
     padding: '0.1rem',
@@ -23,7 +22,6 @@ const useStyles = createUseStyles(theme => ({
       height: '100%'
     }
   },
-
   nav: {
     flexGrow: 1,
     display: 'flex',
@@ -32,11 +30,9 @@ const useStyles = createUseStyles(theme => ({
     margin: 0,
     height: '100%'
   },
-
   navItem: {
     position: 'relative',
     textDecoration: 'none',
-    color: theme.palette.text.primary,
     height: '100%',
     transition: '0.5s',
     '& li': {
@@ -67,7 +63,6 @@ const useStyles = createUseStyles(theme => ({
   },
   menuItem: {
     textDecoration: 'none',
-    color: 'white',
     fontSize: '1em',
     padding: '0.5rem 2rem',
     transition: '0.5s',
@@ -79,25 +74,34 @@ const useStyles = createUseStyles(theme => ({
 
 function NavBar() {
   const classes = useStyles();
+  const color = useTheme().palette.text.primary;
 
   return (
-    <Paper className={classes.root} color="primary">
+    <Paper className={classes.root} color="primary" style={{color: color}}>
       <Link className={classes.logo}
             to="/">
         <img src={logo} alt="logo"/>
       </Link>
 
       <ul className={classes.nav}>
+        <a className={classes.navItem}
+           style={{cursor: 'pointer'}}
+           onClick={useTheme().toggle}>
+          <li>Toggle</li>
+        </a>
         {navItems.map(item => (
           item.menu
           ?
-          <div className={classes.navItem} key={item.label} style={{cursor: 'pointer'}}>
+          <div className={classes.navItem}
+               key={item.label}
+               style={{cursor: 'pointer'}}>
             <li>{item.label}</li>
             <Paper className={classes.menu} color="primary">
               {item.children.map(menuItem => (
                 <Link className={classes.menuItem}
                       to={menuItem.pathname}
-                      key={menuItem.label}>
+                      key={menuItem.label}
+                      style={{color: color}}>
                   {menuItem.label}
                 </Link>
               ))}
@@ -106,7 +110,8 @@ function NavBar() {
           :
           <Link className={classes.navItem}
                 to={item.pathname}
-                key={navItems.indexOf(item)}>
+                key={navItems.indexOf(item)}
+                style={{color: color}}>
             <li>{item.label}</li>
           </Link>
         ))}

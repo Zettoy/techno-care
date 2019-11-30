@@ -1,30 +1,33 @@
 import React from "react";
-import { createUseStyles } from "react-jss";
+import { createUseStyles, useTheme } from "react-jss";
 import classNames from "classnames";
 
-const useStyles = createUseStyles(theme => ({
+const useStyles = createUseStyles({
   root: {
     display: 'flex',
     flexDirection: 'column',
     alignItems: 'center',
     fontSize: '2em',
     fontWeight: 450,
-    color: theme.palette.text.primary,
+    '& span, & div': {
+      transition: '0.5s'
+    },
     '& div': {
       marginTop: '1rem',
       width: '4rem',
-      borderBottom: `2px solid ${theme.palette.text.primary}`
+      borderBottom: '2px solid',
     }
   }
-}));
+});
 
 function Title(props) {
   const classes = useStyles();
+  const color = useTheme().palette.text.primary;
 
   return (
     <div className={classNames(props.className, classes.root)} style={props.style}>
-      <span>{props.children}</span>
-      <div/>
+      <span style={{color: color}}>{props.children}</span>
+      <div style={{borderBottomColor: color}}/>
     </div>
   )
 }

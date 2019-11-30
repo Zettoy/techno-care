@@ -7,9 +7,6 @@ import content from "../config/content";
 import about from "../assets/about.jpg";
 
 const useStyles = createUseStyles(theme=> ({
-  root: {
-    color: theme.palette.text.primary
-  },
   body: {
     display: 'grid',
     gridTemplateColumns: 'repeat(2, 1fr)',
@@ -32,7 +29,7 @@ function Header() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="secondary">
+    <Paper color="secondary">
       <Container style={{padding: '3rem 0'}}>
         <div className={classes.body}>
           <span>{content.about}</span>

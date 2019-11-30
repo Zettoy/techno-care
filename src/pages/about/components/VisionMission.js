@@ -6,18 +6,17 @@ import Title from "../../../util/Title";
 import Paper from "../../../util/Paper";
 import content from "../config/content";
 
-const useStyles = createUseStyles(theme => ({
+const useStyles = createUseStyles({
   root: {
     position: 'relative',
     zIndex: 1,
-    color: theme.palette.text.primary,
   },
   body: {
     display: 'grid',
     gridGap: '20px',
     gridTemplateColumns: 'repeat(3, 1fr)'
   }
-}));
+});
 
 function VisionMission() {
   const classes = useStyles();
