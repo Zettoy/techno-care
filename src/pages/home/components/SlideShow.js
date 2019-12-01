@@ -56,7 +56,7 @@ const useStyles = createUseStyles(theme => ({
   button: {
     textDecoration: 'none',
     color: theme.palette.text.primary,
-    backgroundColor: '#2e2e2e',
+    backgroundColor: theme.palette.background.primary,
     padding: '1em 2em',
     fontSize: '1.5em',
     boxShadow: theme.elevation['2'],

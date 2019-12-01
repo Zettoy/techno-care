@@ -83,12 +83,11 @@ function Services() {
         <Title style={{marginBottom: '3.5rem', fontSize: '2.5em'}}>
           OUR SERVICES
         </Title>
-        <div className={classes.services}>
+        <Paper className={classes.services}>
           {services.map(item => (
             <Link className={classes.service}
                   to={item.pathname}
-                  key={item.label}
-                  component={Paper}>
+                  key={item.label}>
               <span style={{backgroundImage: `url(${item.image}`}}
                     className={classes.image}/>
               <span className={classes.mask}/>
@@ -100,7 +99,7 @@ function Services() {
               </div>
             </Link>
           ))}
-        </div>
+        </Paper>
       </Container>
     </Paper>
   );

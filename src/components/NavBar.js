@@ -35,6 +35,7 @@ const useStyles = createUseStyles(theme => ({
     textDecoration: 'none',
     height: '100%',
     transition: '0.5s',
+    color: theme.palette.text.primary,
     '& li': {
       padding: '0 1rem',
       fontSize: '1.2em',
@@ -66,6 +67,7 @@ const useStyles = createUseStyles(theme => ({
     fontSize: '1em',
     padding: '0.5rem 2rem',
     transition: '0.5s',
+    color: theme.palette.text.primary,
     '&:hover': {
       backgroundColor: theme.palette.background.hover
     }
@@ -74,10 +76,9 @@ const useStyles = createUseStyles(theme => ({
 
 function NavBar() {
   const classes = useStyles();
-  const color = useTheme().palette.text.primary;
 
   return (
-    <Paper className={classes.root} color="primary" style={{color: color}}>
+    <Paper className={classes.root} color="primary">
       <Link className={classes.logo}
             to="/">
         <img src={logo} alt="logo"/>
@@ -87,7 +88,7 @@ function NavBar() {
         <a className={classes.navItem}
            style={{cursor: 'pointer'}}
            onClick={useTheme().toggle}>
-          <li>Toggle</li>
+          <li>Toggle Light/Dark</li>
         </a>
         {navItems.map(item => (
           item.menu
@@ -100,8 +101,7 @@ function NavBar() {
               {item.children.map(menuItem => (
                 <Link className={classes.menuItem}
                       to={menuItem.pathname}
-                      key={menuItem.label}
-                      style={{color: color}}>
+                      key={menuItem.label}>
                   {menuItem.label}
                 </Link>
               ))}
@@ -110,8 +110,7 @@ function NavBar() {
           :
           <Link className={classes.navItem}
                 to={item.pathname}
-                key={navItems.indexOf(item)}
-                style={{color: color}}>
+                key={navItems.indexOf(item)}>
             <li>{item.label}</li>
           </Link>
         ))}

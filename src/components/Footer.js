@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import { createUseStyles, useTheme } from "react-jss";
+import { createUseStyles } from "react-jss";
 
 import Container from "../util/Container";
 import FlexColumn from "../util/FlexColumn";
@@ -12,7 +12,7 @@ import logo from "../assets/logo.png";
 
 const useStyles = createUseStyles(theme => ({
   title: {
-    borderBottom: `2px solid white`,
+    borderBottom: `2px solid ${theme.palette.text.primary}`,
     padding: '0.2em 0',
     fontSize: '1.5em',
     marginBottom: '1rem'
@@ -25,7 +25,7 @@ const useStyles = createUseStyles(theme => ({
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gridGap: '1.5rem',
-    // color: theme.palette.text.primary,
+    color: theme.palette.text.primary,
     '& $logo, & $links, & $map, & $contact': {
       boxSizing: 'border-box',
       padding: '1.5rem 0',
@@ -50,6 +50,7 @@ const useStyles = createUseStyles(theme => ({
     textDecoration: 'none',
     borderBottom: 'grey 1px solid',
     padding: '0.3rem 0',
+    color: theme.palette.text.primary,
     '&:hover': {
       textDecoration: 'underline'
     }
@@ -68,11 +69,10 @@ const useStyles = createUseStyles(theme => ({
 
 function Footer() {
   const classes = useStyles();
-  const color = useTheme().palette.text.primary;
 
   return (
     <Paper className={classes.root} color="primary">
-      <Container className={classes.container} style={{color: color}}>
+      <Container className={classes.container}>
 
         <FlexColumn className={classes.logo}>
           <img src={logo} alt="logo"/>
@@ -86,8 +86,7 @@ function Footer() {
               (item.pathname !== '/' && !item.menu) &&
               <Link className={classes.link}
                     to={item.pathname}
-                    key={item.pathname}
-                    style={{color: color}}>
+                    key={item.pathname}>
                 {item.label}
               </Link>
             ))}
