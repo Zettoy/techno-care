@@ -12,7 +12,8 @@ const useStyles = createUseStyles({
   container: {
     padding: '1.5rem 0',
     '& span': {
-      fontSize: '3em'
+      fontSize: '3em',
+      color: 'white'
     }
   }
 });

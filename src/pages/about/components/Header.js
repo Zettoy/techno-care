@@ -7,22 +7,42 @@ import content from "../config/content";
 import about from "../assets/about.jpg";
 
 const useStyles = createUseStyles(theme=> ({
+  container: {
+    width: `calc(${theme.screenSize.lg} + 4rem)`,
+  },
   body: {
-    display: 'grid',
-    gridTemplateColumns: 'repeat(2, 1fr)',
-    gridGap: '1rem',
-    '& span:nth-child(1)': {
-      gridRow: '1 / 3'
-    },
-    '& span:nth-child(2)': {
-      gridRow: '3 / 4'
+    display: 'flex',
+    width: '100%',
+    padding: '5rem 0',
+    '& $content, & img': {
+      position: 'relative',
+      flexGrow: 1,
+      width: '100%',
+      boxSizing: 'border-box'
     },
     '& img': {
-      gridRow: '1 / 4',
-      width: '100%',
-      boxShadow: theme.elevation[2]
+      boxShadow: theme.elevation[2],
+      bottom: '2rem',
+      right: '2rem'
     }
   },
+  content: {
+    padding: '2.5rem 2rem',
+    zIndex: 1,
+    top: '2rem',
+    left: '2rem',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+
+    '& span': {
+      fontSize: '1.1rem'
+    },
+    '& span:nth-child(2)': {
+      padding: '0.5rem 1rem',
+      borderLeft: `2px solid ${theme.palette.text.primary}`
+    },
+  }
 }));
 
 function Header() {
@@ -30,10 +50,12 @@ function Header() {
 
   return (
     <Paper color="secondary">
-      <Container style={{padding: '3rem 0'}}>
+      <Container className={classes.container}>
         <div className={classes.body}>
-          <span>{content.about}</span>
-          <span>Your satisfaction, Our desire</span>
+          <Paper className={classes.content} color="primary">
+            <span>{content.about}</span>
+            <span>Your satisfaction, Our desire</span>
+          </Paper>
           <img src={about} alt="about"/>
         </div>
       </Container>
