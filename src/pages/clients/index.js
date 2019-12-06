@@ -1,9 +1,14 @@
 import React from "react";
 
+import Main from "../../util/Main";
+import TitleBar from "../../util/TitleBar";
+
 function Clients() {
 
   return (
-    <div>Clients</div>
+    <Main>
+      <TitleBar>Clients</TitleBar>
+    </Main>
   )
 }
 
