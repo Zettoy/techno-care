@@ -7,7 +7,7 @@ const useStyles = createUseStyles({
   root: {
     width: '100%',
     backgroundImage: `url(${titleBar})`,
-    backgroundSize: 'cover'
+    backgroundSize: 'cover',
   },
   container: {
     padding: '1.5rem 0',

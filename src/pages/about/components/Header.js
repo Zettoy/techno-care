@@ -36,7 +36,8 @@ const useStyles = createUseStyles(theme=> ({
     justifyContent: 'space-between',
 
     '& span': {
-      fontSize: '1.1rem'
+      fontSize: '1.1rem',
+      color: theme.palette.text.primary
     },
     '& span:nth-child(2)': {
       padding: '0.5rem 1rem',
