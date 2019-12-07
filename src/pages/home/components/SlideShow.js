@@ -18,7 +18,7 @@ const useStyles = createUseStyles(theme => ({
   },
   '@keyframes slide': theme.animation.slideUp,
   root: {
-    height: '100%',
+    height: 'calc(100% - 4.5rem)',
     display: 'flex',
     alignItems: 'center',
     position: 'relative',
@@ -35,7 +35,6 @@ const useStyles = createUseStyles(theme => ({
     animationIterationCount: 'infinite'
   },
   content: {
-    position: 'relative',
     zIndex: 2,
     display: 'flex',
     flexDirection: 'column',

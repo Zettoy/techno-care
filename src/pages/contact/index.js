@@ -1,10 +1,9 @@
 import React from "react";
 
-import Main from "../../util/Main";
 import TitleBar from "../../util/TitleBar";
 
 export default () => (
-  <Main>
+  <React.Fragment>
     <TitleBar>Contact</TitleBar>
-  </Main>
+  </React.Fragment>
 );

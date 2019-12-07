@@ -16,7 +16,7 @@ const useStyles = createUseStyles(theme => ({
   },
   root: {
     position: 'relative',
-    zIndex: -2
+    zIndex: -3
   },
   body: {
     width: theme.screenSize.md,
@@ -40,6 +40,9 @@ const useStyles = createUseStyles(theme => ({
         borderRadius: '50%',
         width: '10%',
         boxShadow: theme.elevation[2]
+      },
+      '& span': {
+        color: theme.palette.text.primary
       }
     }
   }

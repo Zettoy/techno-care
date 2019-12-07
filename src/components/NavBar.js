@@ -78,44 +78,47 @@ function NavBar() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="primary">
-      <Link className={classes.logo}
-            to="/">
-        <img src={logo} alt="logo"/>
-      </Link>
+    <React.Fragment>
+      <Paper className={classes.root} color="primary">
+        <Link className={classes.logo}
+              to="/">
+          <img src={logo} alt="logo"/>
+        </Link>
 
-      <ul className={classes.nav}>
-        <a className={classes.navItem}
-           style={{cursor: 'pointer'}}
-           onClick={useTheme().toggle}>
-          <li>Toggle Light/Dark</li>
-        </a>
-        {navItems.map(item => (
-          item.menu
-          ?
-          <div className={classes.navItem}
-               key={item.label}
-               style={{cursor: 'pointer'}}>
-            <li>{item.label}</li>
-            <Paper className={classes.menu} color="primary">
-              {item.children.map(menuItem => (
-                <Link className={classes.menuItem}
-                      to={menuItem.pathname}
-                      key={menuItem.label}>
-                  {menuItem.label}
-                </Link>
-              ))}
-            </Paper>
-          </div>
-          :
-          <Link className={classes.navItem}
-                to={item.pathname}
-                key={navItems.indexOf(item)}>
-            <li>{item.label}</li>
-          </Link>
-        ))}
-      </ul>
-    </Paper>
+        <ul className={classes.nav}>
+          <a className={classes.navItem}
+             style={{cursor: 'pointer'}}
+             onClick={useTheme().toggle}>
+            <li>Toggle Light/Dark</li>
+          </a>
+          {navItems.map(item => (
+            item.menu
+            ?
+            <div className={classes.navItem}
+                 key={item.label}
+                 style={{cursor: 'pointer'}}>
+              <li>{item.label}</li>
+              <Paper className={classes.menu} color="primary">
+                {item.children.map(menuItem => (
+                  <Link className={classes.menuItem}
+                        to={menuItem.pathname}
+                        key={menuItem.label}>
+                    {menuItem.label}
+                  </Link>
+                ))}
+              </Paper>
+            </div>
+            :
+            <Link className={classes.navItem}
+                  to={item.pathname}
+                  key={navItems.indexOf(item)}>
+              <li>{item.label}</li>
+            </Link>
+          ))}
+        </ul>
+      </Paper>
+      <div style={{height: '4.5rem', width: '100%'}}/>
+    </React.Fragment>
   );
 }
 

@@ -41,17 +41,12 @@ const useStyles = createUseStyles(theme => ({
   mask: {
     backgroundColor: 'rgba(0, 0, 0, 0.5)',
     position: 'absolute',
-    zIndex: 0,
-    top: 0,
-    left: 0,
     width: '100%',
     height: '100%',
     opacity: 0,
     transition: '0.5s'
   },
   social: {
-    position: 'relative',
-    zIndex: 1,
     display: 'flex',
     opacity: 0,
     transform: 'translateY(10rem)',
@@ -67,6 +62,10 @@ const useStyles = createUseStyles(theme => ({
         backgroundColor: 'rgba(255, 255, 255, 1)'
       }
     }
+  },
+  info: {
+    marginTop: '0.5rem',
+    color: theme.palette.text.primary
   }
 }));
 
@@ -91,8 +90,8 @@ function Team() {
                   <div/>
                 </div>
               </Paper>
-              <span style={{marginTop: '0.5rem'}}>{member.name}</span>
-              <span style={{marginTop: '0.5rem'}}>{member.title}</span>
+              <span className={classes.info}>{member.name}</span>
+              <span className={classes.info}>{member.title}</span>
             </div>
           ))}
         </div>
