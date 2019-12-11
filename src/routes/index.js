@@ -10,6 +10,9 @@ import Quote from "../pages/quote";
 import Clients from "../pages/clients";
 import Contact from "../pages/contact";
 
+import services from "../config/services";
+import Service from "../pages/service";
+
 export default () => (
   <Switch>
     <Route exact path="/" component={ Home }/>
@@ -17,5 +20,10 @@ export default () => (
     <Route exact path="/quote" component={ Quote }/>
     <Route exact path="/clients" component={ Clients }/>
     <Route exact path="/contact" component={ Contact }/>
+    {services.map(item => (
+      <Route exact path={item.pathname} key={services.indexOf(item)}>
+        <Service service={item}/>
+      </Route>
+    ))}
   </Switch>
 );
