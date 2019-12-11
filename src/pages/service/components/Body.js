@@ -1,8 +1,11 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 
 import Container from "../../../util/Container";
 import Paper from "../../../util/Paper";
+
+import services from "../../../config/services";
 
 const useStyles = createUseStyles(theme => ({
   container: {
@@ -37,17 +40,17 @@ const useStyles = createUseStyles(theme => ({
     position: 'absolute',
     width: '100%',
     height: '100%',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)'
+    backgroundColor: 'rgba(0, 0, 0, 0.5)',
   },
   body: {
     display: 'grid',
-    gridTemplateColumns: 'repeat(4, 1fr)',
-    gridGap: '1.5rem'
+    gridTemplateColumns: 'repeat(10, 1fr)',
+    gridGap: '1.5rem',
+    marginTop: '1rem'
   },
   content: {
-    gridColumn: '1 / 4',
+    gridColumn: '1 / 8',
     display: 'flex',
-    padding: '1rem 0',
     flexDirection: 'column',
     '& span:nth-child(1)': {
       fontSize: '2em'
@@ -55,6 +58,30 @@ const useStyles = createUseStyles(theme => ({
     '& span:nth-child(2)': {
       fontSize: '1.1em',
       marginTop: '0.5rem'
+    }
+  },
+  aside: {
+    gridColumn: '8 / 11',
+    display: 'flex',
+    flexDirection: 'column'
+  },
+  asideItem: {
+    backgroundSize: 'cover',
+    position: 'relative',
+    height: '4rem',
+    display: 'flex',
+    alignItems: 'center',
+    margin: '0.5rem 0',
+    '& $mask': {
+      transition: '0.5s'
+    },
+    '&:hover $mask': {
+      opacity: 0
+    },
+    '& span:nth-child(2)': {
+      position: 'relative',
+      zIndex: 1,
+      margin: '0 1rem'
     }
   }
 }));
@@ -75,8 +102,18 @@ function Body({data}) {
             <span>{data.label}</span>
             <span>{data.content}</span>
           </div>
-          <div style={{gridColumn: '4 / 5'}}>
-            test
+          <div className={classes.aside}>
+            {services.map(item => (
+              <Link to={item.pathname}
+                    key={services.indexOf(item)}
+                    style={{textDecoration: 'none', color: 'white'}}>
+                <Paper className={classes.asideItem}
+                       style={{backgroundImage: `url(${item.image})`}}>
+                  <span className={classes.mask}/>
+                  <span style={{zIndex: 1, position: 'relative'}}><strong>{item.label} &gt;</strong></span>
+                </Paper>
+              </Link>
+            ))}
           </div>
         </div>
       </Container>

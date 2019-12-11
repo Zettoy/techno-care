@@ -69,7 +69,9 @@ function VisionMission() {
         <div className={classes.body}>
           <Paper>
             {data.map(item => (
-              <div className={classes.section} style={{backgroundImage: `url(${item.image})`}}>
+              <div className={classes.section}
+                   key={data.indexOf(item)}
+                   style={{backgroundImage: `url(${item.image})`}}>
                 <span className={classes.mask}/>
                 <div className={classes.content}>
                   <span style={{fontSize: '3rem', marginBottom: '1rem'}}>{item.title}</span>

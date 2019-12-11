@@ -56,7 +56,7 @@ const useStyles = createUseStyles(theme => ({
   nav: {
     display: 'flex',
     justifyContent: 'center',
-    marginTop: '1rem',
+    padding: '1rem 0',
     '& button': {
       margin: '0 0.1rem',
       backgroundColor: theme.palette.background.primary,
@@ -66,7 +66,7 @@ const useStyles = createUseStyles(theme => ({
       height: '2rem',
       width: '2rem',
       transition: '0.5s',
-      // boxShadow: theme.elevation[2],
+      boxShadow: theme.elevation[2],
       '&:hover': {
         backgroundColor: theme.palette.background.hover
       },
