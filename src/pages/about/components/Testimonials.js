@@ -26,19 +26,53 @@ const useStyles = createUseStyles(theme => ({
     flexGrow: 1,
     width: theme.screenSize.md,
     height: '10rem',
-    padding: '1.5rem 0',
-    margin: '0 0.5rem',
+    padding: '1.5rem 1.5rem',
+    margin: '0 1rem',
     display: 'flex',
     flexDirection: 'column',
     justifyContent: 'space-between',
     alignItems: 'flex-start',
-    '& img': {
-      borderRadius: '50%',
-      width: '10%',
-      boxShadow: theme.elevation[2]
-    },
     '& span': {
       color: theme.palette.text.primary
+    },
+    '& div': {
+      alignSelf: 'flex-end',
+      display: 'flex',
+      alignItems: 'flex-end',
+      justifyContent: 'flex-end',
+      '& img, & span': {
+        margin: '0 0.2rem'
+      },
+      '& img': {
+        borderRadius: '50%',
+        width: '10%',
+        boxShadow: theme.elevation[2]
+      },
+      '& span': {
+        fontSize: '1.2em'
+      }
+    }
+  },
+  nav: {
+    display: 'flex',
+    justifyContent: 'center',
+    marginTop: '1rem',
+    '& button': {
+      margin: '0 0.1rem',
+      backgroundColor: theme.palette.background.primary,
+      border: 'none',
+      cursor: 'pointer',
+      color: theme.palette.text.primary,
+      height: '2rem',
+      width: '2rem',
+      transition: '0.5s',
+      // boxShadow: theme.elevation[2],
+      '&:hover': {
+        backgroundColor: theme.palette.background.hover
+      },
+      '&:focus': {
+        outline: 'none'
+      }
     }
   }
 }));
@@ -73,16 +107,16 @@ function Testimonials() {
             {testimonials.map(item => (
               <Paper className={classes.slide} color="primary"
                      key={testimonials.indexOf(item)}>
-                <span>"{item.content}"</span>
+                <span style={{fontSize: '1.5em'}}>"{item.content}"</span>
                 <div style={{display: 'flex'}}>
                   <img src={item.avatar} alt="avatar"/>
-                  <span>{item.name}</span>
+                  <span>{item.name},</span>
                   <span>{item.head}</span>
                 </div>
               </Paper>
             ))}
           </div>
-          <div style={{display: 'flex', justifyContent: 'center', marginTop: '1rem'}}>
+          <div className={classes.nav}>
             <button onClick={handleLt}>&lt;</button>
             <button onClick={handleGt}>&gt;</button>
           </div>
