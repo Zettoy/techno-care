@@ -1,19 +1,12 @@
 import React from "react";
-import { createUseStyles } from "react-jss";
+import {createUseStyles, useTheme} from "react-jss";
 
 import Container from "../../../util/Container";
 import Title from "../../../util/Title";
 import Paper from "../../../util/Paper";
-import avatar from "../assets/avatar.png";
+import testimonials from "../config/testimonials";
 
 const useStyles = createUseStyles(theme => ({
-  '@keyframes slideShow': {
-    '0%': { transform: 'translateX(0)' },
-    '37.5%': { transform: 'translateX(0)' },
-    '50%': { transform: `translateX(-${theme.screenSize.md})` },
-    '87.5%': { transform: `translateX(-${theme.screenSize.md})` },
-    '100%': { transform: 'translateX(0)' }
-  },
   root: {
     position: 'relative',
     zIndex: -3
@@ -23,33 +16,47 @@ const useStyles = createUseStyles(theme => ({
     margin: 'auto',
     overflow: 'hidden',
     display: 'flex',
-    flexDirection: 'column-reverse'
+    flexDirection: 'column'
   },
   slides: {
-    width: theme.screenSize.xl,
     display: 'flex',
-    animationName: '$slideShow',
-    animationDuration: '8s',
-    animationIterationCount: 'infinite',
-    '& div': {
-      flexGrow: 1,
-      display: 'flex',
-      flexDirection: 'column',
-      alignItems: 'center',
-      '& img': {
-        borderRadius: '50%',
-        width: '10%',
-        boxShadow: theme.elevation[2]
-      },
-      '& span': {
-        color: theme.palette.text.primary
-      }
+    transition: '1s',
+  },
+  slide: {
+    flexGrow: 1,
+    width: theme.screenSize.md,
+    height: '10rem',
+    padding: '1.5rem 0',
+    margin: '0 0.5rem',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'space-between',
+    alignItems: 'flex-start',
+    '& img': {
+      borderRadius: '50%',
+      width: '10%',
+      boxShadow: theme.elevation[2]
+    },
+    '& span': {
+      color: theme.palette.text.primary
     }
   }
 }));
 
 function Testimonials() {
   const classes = useStyles();
+  const theme = useTheme();
+  const [transform, setTransform] = React.useState(0);
+
+  const handleLt = () => {
+    if (transform === 0) return;
+    setTransform(transform - 1);
+  };
+
+  const handleGt = () => {
+    if (transform === testimonials.length - 1) return;
+    setTransform(transform + 1);
+  };
 
   return (
     <Paper className={classes.root} color="secondary">
@@ -58,19 +65,26 @@ function Testimonials() {
           TESTIMONIALS
         </Title>
         <div className={classes.body}>
-          <div className={classes.slides}>
-            <div>
-              <img src={avatar} alt="avatar"/>
-              <span>name1</span>
-              <span>head1</span>
-              <span>content1</span>
-            </div>
-            <div>
-              <img src={avatar} alt="avatar"/>
-              <span>name2</span>
-              <span>head2</span>
-              <span>content2</span>
-            </div>
+          <div className={classes.slides}
+               style={{
+                 width: `calc(${theme.screenSize.md} * ${testimonials.length})`,
+                 transform: `translateX(calc(${-transform} * ${theme.screenSize.md}))`
+               }}>
+            {testimonials.map(item => (
+              <Paper className={classes.slide} color="primary"
+                     key={testimonials.indexOf(item)}>
+                <span>"{item.content}"</span>
+                <div style={{display: 'flex'}}>
+                  <img src={item.avatar} alt="avatar"/>
+                  <span>{item.name}</span>
+                  <span>{item.head}</span>
+                </div>
+              </Paper>
+            ))}
+          </div>
+          <div style={{display: 'flex', justifyContent: 'center', marginTop: '1rem'}}>
+            <button onClick={handleLt}>&lt;</button>
+            <button onClick={handleGt}>&gt;</button>
           </div>
         </div>
       </Container>
