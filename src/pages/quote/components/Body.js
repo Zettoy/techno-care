@@ -29,15 +29,33 @@ const useStyles = createUseStyles(theme => ({
   form: {
     gridColumn: '1 / 6',
     '& input, & textarea': {
-      marginTop: '0.3rem',
-      marginBottom: '0.5rem',
-      padding: '0.4rem 0.3rem'
+      marginTop: '0.5rem',
+      marginBottom: '1rem',
+      padding: '0.4rem',
+      backgroundColor: theme.palette.background.primary,
+      color: theme.palette.text.primary,
+      border: 'none',
+      boxShadow: theme.elevation[2],
+      '&:focus': {
+        outline: 'none'
+      }
     },
     '& input': {
       width: '50%'
     },
     '& textarea': {
       width: '70%'
+    },
+    '& $button': {
+      width: '10%',
+      padding: '0.5rem 0'
+    }
+  },
+  button: {
+    cursor: 'pointer',
+    transition: '0.5s',
+    '&:hover': {
+      backgroundColor: theme.palette.background.hover
     }
   },
   aside: {
@@ -69,7 +87,7 @@ function Body() {
             <label htmlFor="message"><strong>Message</strong></label>
             <textarea id="message" name="message" rows="10" required/>
 
-            <input type="button" value="Submit" style={{width: '10%'}}/>
+            <input className={classes.button} type="button" value="Submit"/>
           </FlexColumn>
         </div>
         <div className={classes.aside}>

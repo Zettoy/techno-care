@@ -4,13 +4,10 @@ import {createUseStyles, useTheme} from "react-jss";
 import Container from "../../../util/Container";
 import Title from "../../../util/Title";
 import Paper from "../../../util/Paper";
+import Button from "../../../util/Button";
 import testimonials from "../config/testimonials";
 
 const useStyles = createUseStyles(theme => ({
-  root: {
-    position: 'relative',
-    zIndex: -3
-  },
   body: {
     width: theme.screenSize.md,
     margin: 'auto',
@@ -59,20 +56,8 @@ const useStyles = createUseStyles(theme => ({
     padding: '1rem 0',
     '& button': {
       margin: '0 0.1rem',
-      backgroundColor: theme.palette.background.primary,
-      border: 'none',
-      cursor: 'pointer',
-      color: theme.palette.text.primary,
       height: '2rem',
       width: '2rem',
-      transition: '0.5s',
-      boxShadow: theme.elevation[2],
-      '&:hover': {
-        backgroundColor: theme.palette.background.hover
-      },
-      '&:focus': {
-        outline: 'none'
-      }
     }
   }
 }));
@@ -93,7 +78,7 @@ function Testimonials() {
   };
 
   return (
-    <Paper className={classes.root} color="secondary">
+    <Paper color="secondary">
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           TESTIMONIALS
@@ -105,7 +90,7 @@ function Testimonials() {
                  transform: `translateX(calc(${-transform} * ${theme.screenSize.md}))`
                }}>
             {testimonials.map(item => (
-              <Paper className={classes.slide} color="primary"
+              <Paper className={classes.slide} color="primary" elevation="2"
                      key={testimonials.indexOf(item)}>
                 <span style={{fontSize: '1.5em'}}>"{item.content}"</span>
                 <div style={{display: 'flex'}}>
@@ -117,8 +102,8 @@ function Testimonials() {
             ))}
           </div>
           <div className={classes.nav}>
-            <button onClick={handleLt}>&lt;</button>
-            <button onClick={handleGt}>&gt;</button>
+            <Button onClick={handleLt}>&lt;</Button>
+            <Button onClick={handleGt}>&gt;</Button>
           </div>
         </div>
       </Container>

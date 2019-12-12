@@ -7,10 +7,6 @@ import Paper from "../../../util/Paper";
 import teamMembers from "../config/teamMembers";
 
 const useStyles = createUseStyles(theme => ({
-  root: {
-    position: 'relative',
-    zIndex: -2
-  },
   body: {
     display: 'grid',
     gridGap: '1.5rem',
@@ -73,7 +69,7 @@ function Team() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="secondary">
+    <Paper color="secondary">
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           OUR TEAM
@@ -81,7 +77,7 @@ function Team() {
         <div className={classes.body}>
           {teamMembers.map(member => (
             <div className={classes.member} key={teamMembers.indexOf(member)}>
-              <Paper className={classes.profile}
+              <Paper className={classes.profile} elevation="2"
                      style={{backgroundImage: `url(${require(`../assets/${member.avatar}`)})`}}>
                 <span className={classes.mask}/>
                 <div className={classes.social}>

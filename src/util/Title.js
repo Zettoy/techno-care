@@ -18,11 +18,11 @@ const useStyles = createUseStyles(theme => ({
   }
 }));
 
-function Title(props) {
+function Title({className, style, ...props}) {
   const classes = useStyles();
 
   return (
-    <div className={classNames(props.className, classes.root)} style={props.style}>
+    <div className={classNames(className, classes.root)} style={style}>
       <span>{props.children}</span>
       <div/>
     </div>

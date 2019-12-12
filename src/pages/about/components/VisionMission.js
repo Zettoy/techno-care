@@ -7,10 +7,6 @@ import Paper from "../../../util/Paper";
 import content from "../config/content";
 
 const useStyles = createUseStyles({
-  root: {
-    position: 'relative',
-    zIndex: -1,
-  },
   body: {
     display: 'flex',
     flexDirection: 'column'
@@ -61,13 +57,13 @@ function VisionMission() {
 
 
   return (
-    <Paper className={classes.root} color="primary">
+    <Paper color="primary">
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           OUR VISION AND MISSION
         </Title>
         <div className={classes.body}>
-          <Paper>
+          <Paper elevation="2">
             {data.map(item => (
               <div className={classes.section}
                    key={data.indexOf(item)}

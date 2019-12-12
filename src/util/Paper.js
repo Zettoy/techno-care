@@ -5,16 +5,16 @@ import classNames from 'classnames';
 const useStyles = createUseStyles(theme => ({
   root: {
     backgroundColor: props => theme.palette.background[props.color],
-    boxShadow: props => props.elevation ? theme.elevation[props.elevation] : theme.elevation[2],
+    boxShadow: props => props.elevation && theme.elevation[props.elevation],
     transition: '0.5s'
   }
 }));
 
-function Paper(props) {
-  const classes = useStyles(props);
+function Paper({className, style, color, elevation, ...props}) {
+  const classes = useStyles({color, elevation});
 
   return (
-    <div className={classNames(props.className, classes.root)} style={props.style}>
+    <div className={classNames(className, classes.root)} style={style}>
       {props.children}
     </div>
   )

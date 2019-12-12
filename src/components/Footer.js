@@ -4,7 +4,6 @@ import { createUseStyles } from "react-jss";
 
 import Container from "../util/Container";
 import FlexColumn from "../util/FlexColumn";
-import Paper from "../util/Paper";
 
 import navItems from "../config/navItems";
 import contactInfo from "../config/contactInfo";
@@ -12,20 +11,19 @@ import logo from "../assets/logo.png";
 
 const useStyles = createUseStyles(theme => ({
   title: {
-    borderBottom: `2px solid ${theme.palette.text.primary}`,
+    borderBottom: `2px solid white`,
     padding: '0.2em 0',
     fontSize: '1.5em',
     marginBottom: '1rem'
   },
   root: {
-    position: 'relative',
-    zIndex: -999 // The lowest layer
+    backgroundColor: '#282828',
   },
   container: {
     display: 'grid',
     gridTemplateColumns: 'repeat(4, 1fr)',
     gridGap: '1.5rem',
-    color: theme.palette.text.primary,
+    color: 'white',
     '& $logo, & $links, & $map, & $contact': {
       boxSizing: 'border-box',
       padding: '1.5rem 0',
@@ -50,7 +48,7 @@ const useStyles = createUseStyles(theme => ({
     textDecoration: 'none',
     borderBottom: 'grey 1px solid',
     padding: '0.3rem 0',
-    color: theme.palette.text.primary,
+    color: 'white',
     '&:hover': {
       textDecoration: 'underline'
     }
@@ -71,7 +69,7 @@ function Footer() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="primary">
+    <div className={classes.root}>
       <Container className={classes.container}>
 
         <FlexColumn className={classes.logo}>
@@ -111,7 +109,7 @@ function Footer() {
         </FlexColumn>
 
       </Container>
-    </Paper>
+    </div>
   );
 }
 

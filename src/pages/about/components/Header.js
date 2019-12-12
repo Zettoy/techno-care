@@ -53,7 +53,7 @@ function Header() {
     <Paper color="secondary">
       <Container className={classes.container}>
         <div className={classes.body}>
-          <Paper className={classes.content} color="primary">
+          <Paper className={classes.content} color="primary" elevation="2">
             <span>{content.about}</span>
             <span>Your satisfaction, Our desire</span>
           </Paper>

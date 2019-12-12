@@ -79,7 +79,7 @@ function NavBar() {
 
   return (
     <React.Fragment>
-      <Paper className={classes.root} color="primary">
+      <Paper className={classes.root} color="primary" elevation="none">
         <Link className={classes.logo}
               to="/">
           <img src={logo} alt="logo"/>

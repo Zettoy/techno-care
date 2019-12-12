@@ -9,11 +9,11 @@ const useStyles = createUseStyles({
   }
 });
 
-function FlexColumn(props) {
+function FlexColumn({className, style, ...props}) {
   const classes = useStyles();
 
   return (
-    <div className={classNames(props.className, classes.root)} style={props.style}>
+    <div className={classNames(className, classes.root)} style={style}>
       {props.children}
     </div>
   )

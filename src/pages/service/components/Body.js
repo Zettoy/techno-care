@@ -92,7 +92,7 @@ function Body({data}) {
   return (
     <Paper color="secondary">
       <Container className={classes.container}>
-        <Paper className={classes.head}
+        <Paper className={classes.head} elevation="2"
                style={{backgroundImage: `url(${data.image})`}}>
           <span className={classes.mask}/>
           <div>{data.label}<span/></div>
@@ -107,7 +107,7 @@ function Body({data}) {
               <Link to={item.pathname}
                     key={services.indexOf(item)}
                     style={{textDecoration: 'none', color: 'white'}}>
-                <Paper className={classes.asideItem}
+                <Paper className={classes.asideItem} elevation="2"
                        style={{backgroundImage: `url(${item.image})`}}>
                   <span className={classes.mask}/>
                   <span style={{zIndex: 1, position: 'relative'}}><strong>{item.label} &gt;</strong></span>

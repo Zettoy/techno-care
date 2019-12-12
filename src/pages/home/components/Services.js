@@ -8,10 +8,6 @@ import Paper from "../../../util/Paper";
 import services from "../../../config/services";
 
 const useStyles = createUseStyles({
-  root: {
-    position: 'relative',
-    zIndex: -1,
-  },
   services: {
     display: 'grid',
     gridTemplateColumns: 'repeat(3, 1fr)',
@@ -78,12 +74,12 @@ function Services() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="secondary">
+    <Paper color="secondary">
       <Container style={{padding: '5rem 0'}}>
         <Title style={{marginBottom: '3.5rem', fontSize: '2.5em'}}>
           OUR SERVICES
         </Title>
-        <Paper className={classes.services}>
+        <Paper className={classes.services} elevation="2">
           {services.map(item => (
             <Link className={classes.service}
                   to={item.pathname}

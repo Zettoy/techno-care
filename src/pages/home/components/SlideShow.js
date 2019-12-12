@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
 
 import Container from "../../../util/Container";
-import Paper from "../../../util/Paper";
 import images from "../config/bannerImages";
+import Button from "../../../util/Button";
 
 const gap = 100 / images.length / 2;
 
@@ -53,16 +53,8 @@ const useStyles = createUseStyles(theme => ({
     fontSize: '6em'
   },
   button: {
-    textDecoration: 'none',
-    color: theme.palette.text.primary,
-    backgroundColor: theme.palette.background.primary,
     padding: '1em 2em',
     fontSize: '1.5em',
-    boxShadow: theme.elevation['2'],
-    transition: '0.5s',
-    '&:hover': {
-      backgroundColor: theme.palette.background.hover
-    }
   }
 }));
 
@@ -70,7 +62,7 @@ function SlideShow() {
   const classes = useStyles();
 
   return (
-    <Paper className={classes.root} color="inherit">
+    <div className={classes.root}>
       {images.map(item => (
         <span className={classes.img}
               key={images.indexOf(item)}
@@ -83,9 +75,9 @@ function SlideShow() {
       <Container className={classes.content}>
         <span className={classes.title}>Title</span>
         <span className={classes.subtitle}>Subtitle</span>
-        <Link className={classes.button} to="/about">Learn More</Link>
+        <Link to="/about"><Button className={classes.button}>Learn More</Button></Link>
       </Container>
-    </Paper>
+    </div>
   );
 }
 

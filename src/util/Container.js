@@ -9,11 +9,11 @@ const useStyle = createUseStyles(theme => ({
   }
 }));
 
-function Container(props) {
+function Container({className, style, ...props}) {
   const classes = useStyle();
 
   return (
-    <div className={classNames(props.className, classes.root)} style={props.style}>
+    <div className={classNames(className, classes.root)} style={style}>
       {props.children}
     </div>
   )
