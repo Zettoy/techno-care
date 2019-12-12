@@ -19,14 +19,21 @@ const useStyle = createUseStyles(theme => ({
   }
 }));
 
-function Button({className, style, onClick, ...props}) {
+function Button({className, style, onClick, type, ...props}) {
   const classes = useStyle();
 
-  return (
-    <button className={classNames(className, classes.root)} style={style} onClick={onClick}>
-      {props.children}
-    </button>
-  )
+  if (type === 'input') {
+    return (
+      <input className={classNames(className, classes.root)} style={style} onClick={onClick}
+             type="button" value={props.children}/>
+    );
+  } else {
+    return (
+      <button className={classNames(className, classes.root)} style={style} onClick={onClick}>
+        {props.children}
+      </button>
+    );
+  }
 }
 
 export default Button;

@@ -23,16 +23,22 @@ const useStyles = createUseStyles(theme => ({
     alignItems: 'center',
     position: 'relative',
     backgroundColor: 'black',
+    '& $img, & $mask': {
+      position: 'absolute',
+      width: '100%',
+      height: '100%',
+    }
   },
   img: {
-    position: 'absolute',
-    width: '100%',
-    height: '100%',
     zIndex: 1,
     opacity: 0,
     backgroundSize: 'cover',
     animationName: '$fade',
     animationIterationCount: 'infinite'
+  },
+  mask: {
+    zIndex: 2,
+    backgroundColor: 'rgba(0, 0, 0, 0.3)'
   },
   content: {
     zIndex: 2,
@@ -41,20 +47,20 @@ const useStyles = createUseStyles(theme => ({
     alignItems: 'flex-start',
     color: 'white',
     '& $title, & $subtitle, & $button': {
-      margin: '1rem 0',
       animationDuration: '1s',
       animationName: '$slide',
     }
   },
   title: {
-    fontSize: '9em'
-  },
-  subtitle: {
     fontSize: '6em'
   },
+  subtitle: {
+    fontSize: '3em',
+  },
   button: {
-    padding: '1em 2em',
-    fontSize: '1.5em',
+    marginTop: '4rem',
+    padding: '1em 1.5em',
+    fontSize: '1.3em',
   }
 }));
 
@@ -72,10 +78,11 @@ function SlideShow() {
                 animationDelay: `${images.indexOf(item) * 8}s`
               }}/>
       ))}
+      <span className={classes.mask}/>
       <Container className={classes.content}>
-        <span className={classes.title}>Title</span>
-        <span className={classes.subtitle}>Subtitle</span>
-        <Link to="/about"><Button className={classes.button}>Learn More</Button></Link>
+        <span className={classes.title}><strong>TechnoCare IT Services</strong></span>
+        <span className={classes.subtitle}>Your satisfaction, our desire.</span>
+        <Link to="/quote"><Button className={classes.button}>GET A QUOTE</Button></Link>
       </Container>
     </div>
   );
