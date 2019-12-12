@@ -76,7 +76,7 @@ function Services() {
   return (
     <Paper color="secondary">
       <Container style={{padding: '5rem 0'}}>
-        <Title style={{marginBottom: '3.5rem', fontSize: '2.5em'}}>
+        <Title style={{marginBottom: '3.5rem'}}>
           OUR SERVICES
         </Title>
         <Paper className={classes.services} elevation="2">

@@ -2,7 +2,6 @@ import React from "react";
 import { createUseStyles } from "react-jss";
 
 import Container from "../../../util/Container";
-import FlexColumn from "../../../util/FlexColumn";
 import Paper from "../../../util/Paper";
 
 const useStyles = createUseStyles(theme => ({
@@ -22,45 +21,44 @@ const useStyles = createUseStyles(theme => ({
   container: {
     paddingTop: '4rem',
     paddingBottom: '4rem',
-    display: 'grid',
-    gridTemplateColumns: 'repeat(6, 1fr)',
-    gridGap: '2rem',
+  },
+  quote: {
+    boxSizing: 'border-box',
+    padding: '3rem',
+    color: theme.palette.text.primary,
+    '& span': {
+      fontSize: '2.5em'
+    }
   },
   form: {
-    gridColumn: '1 / 6',
+    marginTop: '1rem',
+    display: 'grid',
+    gridGap: '1rem',
+    gridTemplateColumns: 'repeat(4, 1fr)'
+  },
+  formItem: {
+    display: 'flex',
+    flexDirection: 'column',
+    '& label': {
+      fontSize: '1.2rem',
+      marginBottom: '0.5rem'
+    },
     '& input, & textarea': {
-      marginTop: '0.5rem',
-      marginBottom: '1rem',
-      padding: '0.4rem',
+      boxSizing: 'border-box',
+      width: '100%',
       backgroundColor: theme.palette.background.primary,
       color: theme.palette.text.primary,
-      border: 'none',
-      boxShadow: theme.elevation[2],
+      border: '1px solid grey',
+      fontSize: '1.2rem',
+      padding: '1rem',
+      transition: '0.5s',
       '&:focus': {
-        outline: 'none'
+        outline: 'none',
+        border: `1px solid ${theme.palette.text.primary}`,
+        boxShadow: '0 0 3px rgba(0, 0, 0, 0.5)'
       }
     },
-    '& input': {
-      width: '50%'
-    },
-    '& textarea': {
-      width: '70%'
-    },
-    '& $button': {
-      width: '10%',
-      padding: '0.5rem 0'
-    }
   },
-  button: {
-    cursor: 'pointer',
-    transition: '0.5s',
-    '&:hover': {
-      backgroundColor: theme.palette.background.hover
-    }
-  },
-  aside: {
-    gridColumn: '6 / 7'
-  }
 }));
 
 function Body() {
@@ -69,41 +67,32 @@ function Body() {
   return (
     <Paper className={classes.root} color="secondary">
       <Container className={classes.container}>
-        <div className={classes.form}>
-          <div className={classes.title}><span>Quote Form</span></div>
-          <FlexColumn>
-            <label htmlFor="name"><strong>Name</strong></label>
-            <input type="text" id="name" name="name" required/>
-
-            <label htmlFor="contact"><strong>Contact</strong></label>
-            <input type="text" id="contact" name="contact" required/>
-
-            <label htmlFor="email"><strong>Email</strong></label>
-            <input type="email" id="email" name="email" required/>
-
-            <label htmlFor="service"><strong>Service interested</strong></label>
-            <input type="text" id="service" name="service" required/>
-
-            <label htmlFor="message"><strong>Message</strong></label>
-            <textarea id="message" name="message" rows="10" required/>
-
-            <input className={classes.button} type="button" value="Submit"/>
-          </FlexColumn>
-        </div>
-        <div className={classes.aside}>
-          <FlexColumn>
-            <div className={classes.title}><span>Contacts</span></div>
-            <span>5B/186-188 Canterbury Road,Canterbury,2193,NSW Australia</span>
-            <span>info@technocareitsolutions.com.au</span>
-            <span>0421 673 915</span>
-          </FlexColumn>
-          <FlexColumn style={{marginTop: '2rem'}}>
-            <div className={classes.title}><span>Business Hours</span></div>
-            <span>Monday-Friday:10am-8pm</span>
-            <span>Saturday:11am -4pm</span>
-            <span>Sunday: closed</span>
-          </FlexColumn>
-        </div>
+        <Paper color="primary" elevation="2" className={classes.quote}>
+          <span><strong>GET A QUOTE TODAY</strong></span>
+          <form className={classes.form}>
+            <div className={classes.formItem}>
+              <label htmlFor="name"><strong>Name</strong></label>
+              <input type="text" id="name" name="name" required/>
+            </div>
+            <div className={classes.formItem}>
+              <label htmlFor="contact"><strong>Contact</strong></label>
+              <input type="text" id="contact" name="contact" required/>
+            </div>
+            <div className={classes.formItem}>
+              <label htmlFor="email"><strong>Email</strong></label>
+              <input type="email" id="email" name="email" required/>
+            </div>
+            <div className={classes.formItem}>
+              <label htmlFor="service"><strong>Service interested</strong></label>
+              <input type="text" id="service" name="service" required/>
+            </div>
+            <div className={classes.formItem} style={{gridColumn: '1 / 5'}}>
+              <label htmlFor="message"><strong>Message</strong></label>
+              <textarea id="message" name="message" rows="10" required/>
+            </div>
+            <input type="button" value="submit"/>
+          </form>
+        </Paper>
       </Container>
     </Paper>
   );
