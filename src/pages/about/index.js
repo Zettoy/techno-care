@@ -9,9 +9,9 @@ import Testimonials from "./components/Testimonials";
 export default () => (
   <React.Fragment>
     <TitleBar>About Us</TitleBar>
-    <Header/>
-    <VisionMission/>
-    <Team/>
-    <Testimonials/>
+    <Header backgroundColor="secondary"/>
+    <VisionMission backgroundColor="primary"/>
+    <Team backgroundColor="secondary"/>
+    <Testimonials backgroundColor="secondary"/>
   </React.Fragment>
 );

@@ -1,10 +1,10 @@
-import React from 'react';
-import { Link } from 'react-router-dom';
-import { createUseStyles, useTheme } from 'react-jss';
+import React from "react";
+import { Link } from "react-router-dom";
+import { createUseStyles, useTheme } from "react-jss";
 
-import Paper from '../util/Paper';
-import logo from '../assets/logo.png';
-import navItems from '../config/navItems';
+import Paper from "../util/Paper";
+import logo from "../assets/logo.png";
+import navItems from "../config/navItems";
 
 const useStyles = createUseStyles(theme => ({
   root: {

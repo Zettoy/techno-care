@@ -1,6 +1,6 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
-import classNames from 'classnames';
+import classNames from "classnames";
 
 const useStyles = createUseStyles(theme => ({
   root: {
@@ -10,11 +10,11 @@ const useStyles = createUseStyles(theme => ({
   }
 }));
 
-function Paper({className, style, color, elevation, ...props}) {
+function Paper({className, style, color, elevation, id, ...props}) {
   const classes = useStyles({color, elevation});
 
   return (
-    <div className={classNames(className, classes.root)} style={style}>
+    <div className={classNames(className, classes.root)} style={style} id={id}>
       {props.children}
     </div>
   )

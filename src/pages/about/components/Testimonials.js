@@ -62,7 +62,7 @@ const useStyles = createUseStyles(theme => ({
   }
 }));
 
-function Testimonials() {
+function Testimonials({backgroundColor}) {
   const classes = useStyles();
   const theme = useTheme();
   const [transform, setTransform] = React.useState(0);
@@ -78,7 +78,7 @@ function Testimonials() {
   };
 
   return (
-    <Paper color="secondary">
+    <Paper color={backgroundColor}>
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           TESTIMONIALS

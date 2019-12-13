@@ -65,11 +65,11 @@ const useStyles = createUseStyles(theme => ({
   }
 }));
 
-function Team() {
+function Team({backgroundColor}) {
   const classes = useStyles();
 
   return (
-    <Paper color="secondary">
+    <Paper color={backgroundColor}>
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           OUR TEAM

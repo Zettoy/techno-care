@@ -35,7 +35,7 @@ const useStyles = createUseStyles({
   }
 });
 
-function VisionMission() {
+function VisionMission({backgroundColor}) {
   const classes = useStyles();
   const data = [
     {
@@ -57,7 +57,7 @@ function VisionMission() {
 
 
   return (
-    <Paper color="primary">
+    <Paper color={backgroundColor}>
       <Container style={{padding: '3rem 0'}}>
         <Title style={{marginBottom: '2rem'}}>
           OUR VISION AND MISSION

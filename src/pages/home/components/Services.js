@@ -70,13 +70,13 @@ const useStyles = createUseStyles({
   }
 });
 
-function Services() {
+function Services({backgroundColor}) {
   const classes = useStyles();
 
   return (
-    <Paper color="secondary">
+    <Paper color={backgroundColor}>
       <Container style={{padding: '3rem 0'}}>
-        <Title style={{marginBottom: '3.5rem'}}>
+        <Title style={{marginBottom: '2rem'}}>
           OUR SERVICES
         </Title>
         <Paper className={classes.services} elevation="2">

@@ -7,12 +7,13 @@ export default [
   },
   {
     label: 'About',
-    pathname: '/about'
+    pathname: '/about',
   },
   {
     label: 'Clients',
-    pathname: '/clients'
-  },  {
+    pathname: '/clients',
+  },
+  {
     label: 'Services',
     pathname: '/services',
     menu: true,
@@ -20,7 +21,7 @@ export default [
   },
   {
     label: 'Quote',
-    pathname: '/quote'
+    pathname: '/quote',
   },
   {
     label: 'Contact',

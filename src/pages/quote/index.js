@@ -6,6 +6,6 @@ import Body from "./components/Body";
 export default () => (
   <React.Fragment>
     <TitleBar>Quote</TitleBar>
-    <Body/>
+    <Body backgroundColor="secondary"/>
   </React.Fragment>
 );
