@@ -7,6 +7,7 @@ import FlexColumn from "../util/FlexColumn";
 
 import navItems from "../config/navItems";
 import contactInfo from "../config/contactInfo";
+import GoogleMap from "../util/GoogleMap";
 // import logo from "../assets/logo.png";
 // import services from "../config/services";
 
@@ -119,11 +120,7 @@ function Footer() {
         </FlexColumn>
 
         <div className={classes.map}>
-          <div style={{
-            height: '100%',
-            width: '100%',
-            backgroundColor: 'grey',
-          }}/>
+          <GoogleMap/>
         </div>
 
       </Container>
