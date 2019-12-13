@@ -2,29 +2,33 @@ import services from "./services";
 
 export default [
   {
-    label: 'Home',
+    name: 'Home',
     pathname: '/'
   },
   {
-    label: 'About',
+    name: 'About',
+    label: 'About Us',
     pathname: '/about',
   },
   {
-    label: 'Clients',
+    name: 'Clients',
+    label: 'Our Clients',
     pathname: '/clients',
   },
   {
-    label: 'Services',
+    name: 'Services',
     pathname: '/services',
     menu: true,
     children: services
   },
   {
-    label: 'Quote',
+    name: 'Quote',
+    label: 'Get A Quote',
     pathname: '/quote',
   },
   {
-    label: 'Contact',
+    name: 'Contact',
+    label: 'Contact Us',
     pathname: '/contact'
   },
 ]

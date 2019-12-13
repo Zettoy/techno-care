@@ -23,7 +23,7 @@ function Title({className, style, ...props}) {
 
   return (
     <div className={classNames(className, classes.root)} style={style}>
-      <span>{props.children}</span>
+      <span><strong>{props.children}</strong></span>
       <div/>
     </div>
   )

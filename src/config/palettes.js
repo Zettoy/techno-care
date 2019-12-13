@@ -5,7 +5,7 @@ export default {
     },
     background: {
       primary: 'white',
-      secondary: 'white',
+      secondary: '#F7F7F7',
       hover: 'darkgrey'
     }
   },

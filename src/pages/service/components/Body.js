@@ -95,7 +95,7 @@ function Body({data}) {
         <Paper className={classes.head} elevation="2"
                style={{backgroundImage: `url(${data.image})`}}>
           <span className={classes.mask}/>
-          <div>{data.label}<span/></div>
+          <div><strong>{data.label}</strong><span/></div>
         </Paper>
         <div className={classes.body}>
           <div className={classes.content}>

@@ -24,7 +24,7 @@ function TitleBar(props) {
   return (
     <div className={classes.root}>
       <Container className={classes.container}>
-        <span>{props.children}</span>
+        <span><strong>{props.children}</strong></span>
       </Container>
     </div>
   );

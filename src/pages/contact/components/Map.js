@@ -1,12 +1,12 @@
 import React from "react";
 import { createUseStyles } from "react-jss";
+import Paper from "../../../util/Paper";
 
 const useStyles = createUseStyles(theme => ({
   root: {
     display: 'flex',
     justifyContent: 'center',
     alignItems: 'center',
-    backgroundColor: theme.palette.background.primary,
     height: '25rem',
     '& span': {
       fontSize: '4rem',
@@ -19,9 +19,9 @@ function Map() {
   const classes = useStyles();
 
   return (
-    <div className={classes.root}>
+    <Paper className={classes.root} color="primary">
       <span>Map</span>
-    </div>
+    </Paper>
   );
 }
 

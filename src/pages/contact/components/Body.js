@@ -76,9 +76,7 @@ const useStyles = createUseStyles(theme => ({
   },
   title: {
     fontSize: '1.5rem',
-    borderBottom: `2px solid ${theme.palette.text.primary}`,
-    marginBottom: '1rem',
-    paddingBottom: '0.5rem',
+    marginBottom: '0.5rem',
   },
   content: {
     fontSize: '0.9rem'
