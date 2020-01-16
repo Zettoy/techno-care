@@ -95,7 +95,7 @@ function NavBar() {
             item.menu
             ?
             <div className={classes.navItem}
-                 key={item.label}
+                 key={navItems.indexOf(item)}
                  style={{cursor: 'pointer'}}>
               <li><strong>{item.name}</strong></li>
               <Paper className={classes.menu} color="primary" elevation="2">

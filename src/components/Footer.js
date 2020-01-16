@@ -129,7 +129,7 @@ function Footer() {
           <span><strong>2019 © Techno Care</strong></span>
           <div className={classes.social}>
             {['f', 'in', 'G+'].map(item => (
-              <span><strong>{item}</strong></span>
+              <span key={item}><strong>{item}</strong></span>
             ))}
           </div>
         </Container>
