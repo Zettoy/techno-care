@@ -15,13 +15,13 @@ import Service from "../pages/service";
 
 export default () => (
   <Switch>
-    <Route exact path="/" component={ Home }/>
-    <Route exact path="/about" component={ About }/>
-    <Route exact path="/quote" component={ Quote }/>
-    <Route exact path="/clients" component={ Clients }/>
-    <Route exact path="/contact" component={ Contact }/>
-    {services.map(item => (
-      <Route exact path={item.pathname} key={services.indexOf(item)}>
+    <Route path="/" component={ Home } exact/>
+    <Route path="/about" component={ About }/>
+    <Route path="/quote" component={ Quote }/>
+    <Route path="/clients" component={ Clients }/>
+    <Route path="/contact" component={ Contact }/>
+    {services.map((item, key) => (
+      <Route path={item.pathname} key={key}>
         <Service service={item}/>
       </Route>
     ))}

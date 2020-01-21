@@ -69,9 +69,9 @@ function SlideShow() {
 
   return (
     <div className={classes.root}>
-      {images.map(item => (
+      {images.map((item, key) => (
         <span className={classes.img}
-              key={images.indexOf(item)}
+              key={key}
               style={{
                 backgroundImage: `url(${item.image})`,
                 animationDuration: `${images.length * 8}s`,

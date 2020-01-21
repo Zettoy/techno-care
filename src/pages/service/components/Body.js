@@ -103,9 +103,8 @@ function Body({data}) {
             <span>{data.content}</span>
           </div>
           <div className={classes.aside}>
-            {services.map(item => (
-              <Link to={item.pathname}
-                    key={services.indexOf(item)}
+            {services.map((item, key) => (
+              <Link to={item.pathname} key={key}
                     style={{textDecoration: 'none', color: 'white'}}>
                 <Paper className={classes.asideItem} elevation="2"
                        style={{backgroundImage: `url(${item.image})`}}>

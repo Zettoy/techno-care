@@ -91,18 +91,18 @@ function NavBar() {
              onClick={useTheme().toggle}>
             <li><strong>Toggle Light/Dark</strong></li>
           </a>
-          {navItems.map(item => (
+          {navItems.map((item, key) => (
             item.menu
             ?
             <div className={classes.navItem}
-                 key={navItems.indexOf(item)}
-                 style={{cursor: 'pointer'}}>
+                 style={{cursor: 'pointer'}}
+                 key={key}>
               <li><strong>{item.name}</strong></li>
               <Paper className={classes.menu} color="primary" elevation="2">
-                {item.children.map(menuItem => (
+                {item.children.map((menuItem, key) => (
                   <Link className={classes.menuItem}
                         to={menuItem.pathname}
-                        key={menuItem.label}>
+                        key={key}>
                     <strong>{menuItem.label}</strong>
                   </Link>
                 ))}
@@ -111,7 +111,7 @@ function NavBar() {
             :
             <Link className={classes.navItem}
                   to={item.pathname}
-                  key={navItems.indexOf(item)}>
+                  key={key}>
               <li><strong>{item.name}</strong></li>
             </Link>
           ))}

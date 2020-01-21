@@ -64,10 +64,10 @@ function VisionMission({backgroundColor}) {
         </Title>
         <div className={classes.body}>
           <Paper elevation="2">
-            {data.map(item => (
+            {data.map((item, key) => (
               <div className={classes.section}
-                   key={data.indexOf(item)}
-                   style={{backgroundImage: `url(${item.image})`}}>
+                   style={{backgroundImage: `url(${item.image})`}}
+                   key={key}>
                 <span className={classes.mask}/>
                 <div className={classes.content}>
                   <span style={{fontSize: '3rem', marginBottom: '1rem'}}>{item.title}</span>

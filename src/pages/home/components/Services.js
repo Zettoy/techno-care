@@ -80,10 +80,10 @@ function Services({backgroundColor}) {
           OUR SERVICES
         </Title>
         <Paper className={classes.services} elevation="2">
-          {services.map(item => (
+          {services.map((item, key) => (
             <Link className={classes.service}
                   to={item.pathname}
-                  key={item.label}>
+                  key={key}>
               <span style={{backgroundImage: `url(${item.image}`}}
                     className={classes.image}/>
               <span className={classes.mask}/>

@@ -89,9 +89,8 @@ function Testimonials({backgroundColor}) {
                  width: `calc(${theme.screenSize.md} * ${testimonials.length})`,
                  transform: `translateX(calc(${-transform} * ${theme.screenSize.md}))`
                }}>
-            {testimonials.map(item => (
-              <Paper className={classes.slide} color="primary" elevation="2"
-                     key={testimonials.indexOf(item)}>
+            {testimonials.map((item, key) => (
+              <Paper className={classes.slide} color="primary" elevation="2" key={key}>
                 <span style={{fontSize: '1.5em'}}>"{item.content}"</span>
                 <div style={{display: 'flex'}}>
                   <img src={item.avatar} alt="avatar"/>

@@ -114,8 +114,8 @@ function Body() {
         <div className={classes.aside}>
           <Paper className={classes.asideItem} color="primary" elevation="2">
             <span className={classes.title}><strong>Contact Us</strong></span>
-            {contactInfo.map(item => (
-              <span key={contactInfo.indexOf(item)} className={classes.content}>{item}</span>
+            {contactInfo.map((item, key) => (
+              <span key={key} className={classes.content}>{item}</span>
             ))}
           </Paper>
           <Paper className={classes.asideItem} color="primary" elevation="2">

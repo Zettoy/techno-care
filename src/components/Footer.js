@@ -4,12 +4,10 @@ import { createUseStyles } from "react-jss";
 
 import Container from "../util/Container";
 import FlexColumn from "../util/FlexColumn";
+import GoogleMap from "../util/GoogleMap";
 
 import navItems from "../config/navItems";
 import contactInfo from "../config/contactInfo";
-import GoogleMap from "../util/GoogleMap";
-// import logo from "../assets/logo.png";
-// import services from "../config/services";
 
 const useStyles = createUseStyles(theme => ({
   title: {
@@ -99,11 +97,11 @@ function Footer() {
         <FlexColumn className={classes.links}>
           <span className={classes.title}><strong>Useful Links</strong></span>
           <FlexColumn>
-            {navItems.map(item => (
+            {navItems.map((item, key) => (
               (item.pathname !== '/' && !item.menu) &&
               <Link className={classes.link}
                     to={item.pathname}
-                    key={item.pathname}>
+                    key={key}>
                 {item.label}
               </Link>
             ))}
@@ -112,10 +110,8 @@ function Footer() {
 
         <FlexColumn className={classes.contact}>
           <span className={classes.title}><strong>Contact Us</strong></span>
-          {contactInfo.map(item => (
-            <span key={contactInfo.indexOf(item)}>
-              {item}
-            </span>
+          {contactInfo.map((item, key) => (
+            <span key={key}>{item}</span>
           ))}
         </FlexColumn>
 
@@ -128,8 +124,8 @@ function Footer() {
         <Container className={classes.bottomBarContent}>
           <span><strong>2019 © Techno Care</strong></span>
           <div className={classes.social}>
-            {['f', 'in', 'G+'].map(item => (
-              <span key={item}><strong>{item}</strong></span>
+            {['f', 'in', 'G+'].map((item, key) => (
+              <span key={key}><strong>{item}</strong></span>
             ))}
           </div>
         </Container>

@@ -75,8 +75,8 @@ function Team({backgroundColor}) {
           OUR TEAM
         </Title>
         <div className={classes.body}>
-          {teamMembers.map(member => (
-            <div className={classes.member} key={teamMembers.indexOf(member)}>
+          {teamMembers.map((member, key) => (
+            <div className={classes.member} key={key}>
               <Paper className={classes.profile} elevation="2"
                      style={{backgroundImage: `url(${require(`../assets/${member.avatar}`)})`}}>
                 <span className={classes.mask}/>

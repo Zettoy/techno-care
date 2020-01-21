@@ -95,8 +95,8 @@ function Body({backgroundColor}) {
               <label htmlFor="service"><strong>Service interested</strong><span><strong>*</strong></span></label>
               <select id="service" name="service" required>
                 <option value="">Choose Service</option>
-                {services.map(item => (
-                  <option key={services.indexOf(item)} value={item.label}>{item.label}</option>
+                {services.map((item, key) => (
+                  <option key={key} value={item.label}>{item.label}</option>
                 ))}
               </select>
             </div>
