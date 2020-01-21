@@ -62,11 +62,11 @@ function Header({backgroundColor, title}) {
     setEdit(false);
   };
 
-  useEffect(() => {
-    axios.get("http://localhost:8080/api/texts")
-      .then(response => setContent(response.data._embedded.texts[0].content))
-      .catch(error => console.log(error))
-  }, []);
+  // useEffect(() => {
+  //   axios.get("http://localhost:8080/api/texts")
+  //     .then(response => setContent(response.data._embedded.texts[0].content))
+  //     .catch(error => console.log(error))
+  // }, []);
 
   return (
     <Paper color={backgroundColor}>

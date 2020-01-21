@@ -1,11 +1,12 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import {createUseStyles, useTheme} from "react-jss";
+import axios from  "axios";
 
 import Container from "../../../util/Container";
 import Title from "../../../util/Title";
 import Paper from "../../../util/Paper";
 import Button from "../../../util/Button";
-import testimonials from "../config/testimonials";
+// import testimonials from "../config/testimonials";
 
 const useStyles = createUseStyles(theme => ({
   body: {
@@ -63,6 +64,23 @@ const useStyles = createUseStyles(theme => ({
 }));
 
 function Testimonials({backgroundColor}) {
+  const [testimonials, setTestimonials] = useState([]);
+
+  useEffect(() => {
+    axios.get('/api/testimonials')
+      .then(response => {
+        const testimonialResponseList = [];
+        response.data._embedded.testimonials.forEach(testimonial => {
+          testimonialResponseList.push({
+            name: testimonial.name,
+            head: testimonial.head,
+            content: testimonial.content
+          });
+        });
+        setTestimonials(testimonialResponseList);
+      });
+  }, []);
+
   const classes = useStyles();
   const theme = useTheme();
   const [transform, setTransform] = React.useState(0);
@@ -93,7 +111,7 @@ function Testimonials({backgroundColor}) {
               <Paper className={classes.slide} color="primary" elevation="2" key={key}>
                 <span style={{fontSize: '1.5em'}}>"{item.content}"</span>
                 <div style={{display: 'flex'}}>
-                  <img src={item.avatar} alt="avatar"/>
+                  <img src={require('../assets/avatar.png')} alt="avatar"/>
                   <span>{item.name},</span>
                   <span>{item.head}</span>
                 </div>

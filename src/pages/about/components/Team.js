@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createUseStyles } from "react-jss";
+import axios from "axios";
 
 import Container from "../../../util/Container";
 import Title from "../../../util/Title";
 import Paper from "../../../util/Paper";
-import teamMembers from "../config/teamMembers";
 
 const useStyles = createUseStyles(theme => ({
   body: {
@@ -66,6 +66,23 @@ const useStyles = createUseStyles(theme => ({
 }));
 
 function Team({backgroundColor}) {
+  const [teamMembers, setTeamMembers] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/teamMembers")
+      .then(response => {
+        const members = [];
+        response.data._embedded.teamMembers.forEach(member => {
+          members.push({
+            name: member.name,
+            title: member.title
+          })
+        });
+        setTeamMembers(members);
+      })
+  }, []);
+
+
   const classes = useStyles();
 
   return (
@@ -78,7 +95,7 @@ function Team({backgroundColor}) {
           {teamMembers.map((member, key) => (
             <div className={classes.member} key={key}>
               <Paper className={classes.profile} elevation="2"
-                     style={{backgroundImage: `url(${require(`../assets/${member.avatar}`)})`}}>
+                     style={{backgroundImage: `url(${require(`../assets/avatar.png`)})`}}>
                 <span className={classes.mask}/>
                 <div className={classes.social}>
                   <div/>

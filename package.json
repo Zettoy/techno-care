@@ -2,6 +2,7 @@
   "name": "techno-care-react",
   "version": "0.1.0",
   "private": true,
+  "proxy": "http://localhost:8080",
   "dependencies": {
     "axios": "^0.19.1",
     "list-react-files": "^0.2.0",
@@ -34,5 +35,6 @@
   },
   "devDependencies": {
     "classnames": "^2.2.6"
-  }
+  },
+  "homepage": "."
 }
