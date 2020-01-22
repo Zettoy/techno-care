@@ -6,10 +6,12 @@ const useStyle = createUseStyles(theme => ({
   root: {
     backgroundColor: theme.palette.background.primary,
     border: 'none',
-    cursor: 'pointer',
-    color: theme.palette.text.primary,
     transition: '0.5s',
     boxShadow: theme.elevation[2],
+  },
+  active: {
+    color: theme.palette.text.primary,
+    cursor: 'pointer',
     '&:hover': {
       backgroundColor: theme.palette.background.hover
     },
@@ -19,21 +21,14 @@ const useStyle = createUseStyles(theme => ({
   }
 }));
 
-function Button({className, style, onClick, type, ...props}) {
+function Button({className, style, onClick, disabled, ...props}) {
   const classes = useStyle();
+  return (
+    <button className={classNames(className, classes.root, !disabled && classes.active)} style={style} onClick={onClick} disabled={disabled}>
+      {props.children}
+    </button>
+  );
 
-  if (type === 'input') {
-    return (
-      <input className={classNames(className, classes.root)} style={style} onClick={onClick}
-             type="button" value={props.children}/>
-    );
-  } else {
-    return (
-      <button className={classNames(className, classes.root)} style={style} onClick={onClick}>
-        {props.children}
-      </button>
-    );
-  }
 }
 
 export default Button;

@@ -1,5 +1,6 @@
-import React from "react";
+import React, { useState } from "react";
 import { createUseStyles } from "react-jss";
+import axios from "axios";
 
 import Container from "../../../util/Container";
 import Paper from "../../../util/Paper";
@@ -71,6 +72,28 @@ const useStyles = createUseStyles(theme => ({
 }));
 
 function Body({backgroundColor}) {
+  const [name, setName] = useState('');
+  const [contact, setContact] = useState('');
+  const [email, setEmail] = useState('');
+  const [serviceInterested, setServiceInterested] = useState('');
+  const [message, setMessage] = useState('');
+
+  const handleClick = event => {
+    event.preventDefault();
+    axios.post('/api/quotes', {
+      name: name,
+      contact: contact,
+      email: email,
+      serviceInterested: serviceInterested,
+      message: message
+    }).then(response => console.log(response));
+    setName('');
+    setContact('');
+    setEmail('');
+    setServiceInterested('');
+    setMessage('');
+  };
+
   const classes = useStyles();
 
   return (
@@ -81,19 +104,19 @@ function Body({backgroundColor}) {
           <form className={classes.form}>
             <div className={classes.formItem} style={{gridColumn: '1 / 5'}}>
               <label htmlFor="name"><strong>Name</strong><span><strong>*</strong></span></label>
-              <input type="text" id="name" name="name" required/>
+              <input type="text" id="name" name="name" value={name} onChange={event => setName(event.target.value)} required/>
             </div>
             <div className={classes.formItem} style={{gridColumn: '5 / 9'}}>
               <label htmlFor="contact"><strong>Contact</strong><span><strong>*</strong></span></label>
-              <input type="text" id="contact" name="contact" required/>
+              <input type="text" id="contact" name="contact" value={contact} onChange={event => setContact(event.target.value)} required/>
             </div>
             <div className={classes.formItem} style={{gridColumn: '9 / 13'}}>
               <label htmlFor="email"><strong>Email</strong><span><strong>*</strong></span></label>
-              <input type="email" id="email" name="email" required/>
+              <input type="email" id="email" name="email" value={email} onChange={event => setEmail(event.target.value)} required/>
             </div>
             <div className={classes.formItem} style={{gridColumn: '1 / 13'}}>
               <label htmlFor="service"><strong>Service interested</strong><span><strong>*</strong></span></label>
-              <select id="service" name="service" required>
+              <select id="service" name="service" value={serviceInterested} onChange={event => setServiceInterested(event.target.value)} required>
                 <option value="">Choose Service</option>
                 {services.map((item, key) => (
                   <option key={key} value={item.label}>{item.label}</option>
@@ -102,9 +125,12 @@ function Body({backgroundColor}) {
             </div>
             <div className={classes.formItem} style={{gridColumn: '1 / 13'}}>
               <label htmlFor="message"><strong>Message</strong></label>
-              <textarea id="message" name="message" rows="10"/>
+              <textarea id="message" name="message" rows="10" value={message} onChange={event => setMessage(event.target.value)}/>
             </div>
-            <Button className={classes.button} type="input">Submit</Button>
+            <Button className={classes.button} onClick={event => handleClick(event)}
+                    disabled={name === '' || contact === '' || email === '' || serviceInterested === ''}>
+              Submit
+            </Button>
           </form>
         </Paper>
       </Container>
