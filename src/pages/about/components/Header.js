@@ -5,7 +5,6 @@ import axios from "axios"
 import Container from "../../../util/Container";
 import Paper from "../../../util/Paper";
 import Title from "../../../util/Title";
-import content from "../config/content";
 import about from "../assets/about.jpg";
 
 const useStyles = createUseStyles(theme=> ({
@@ -52,21 +51,18 @@ const useStyles = createUseStyles(theme=> ({
 function Header({backgroundColor, title}) {
   const classes = useStyles();
 
-  const [edit, setEdit] = useState(false);
   const [content, setContent] = useState("");
+  const [footer, setFooter] = useState("");
 
-  const handleSave = () => {
-    axios.put("http://localhost:8080/api/texts/1", {content: content})
-      .then(response => console.log(response))
-      .catch(error => console.log(error));
-    setEdit(false);
-  };
-
-  // useEffect(() => {
-  //   axios.get("http://localhost:8080/api/texts")
-  //     .then(response => setContent(response.data._embedded.texts[0].content))
-  //     .catch(error => console.log(error))
-  // }, []);
+  useEffect(() => {
+    axios.get("/api/aboutPageTexts")
+      .then(response => {
+        const responseDataList = response.data._embedded.aboutPageTexts;
+        setContent(responseDataList.find(item => item.title === "About").body);
+        setFooter(responseDataList.find(item => item.title === "Philosophy").body);
+      })
+      .catch(error => console.log(error))
+  }, []);
 
   return (
     <Paper color={backgroundColor}>
@@ -74,15 +70,9 @@ function Header({backgroundColor, title}) {
         {title && <Title style={{marginTop: '2rem'}}>ABOUT US</Title>}
         <div className={classes.body}>
           <Paper className={classes.content} color="primary" elevation="2">
-            {edit ? <form>
-                      <textarea style={{width: '100%'}} rows="10" value={content}
-                                onChange={event => setContent(event.target.value)}/>
-                    </form>
-                  : <span>{content}</span>}
+            <span>{content}</span>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <span>Your satisfaction, Our desire</span>
-              {edit ? <button onClick={() => handleSave()}>Save</button>
-                    : <button onClick={() => setEdit(true)}>Edit</button>}
+              <span>{footer}</span>
             </div>
           </Paper>
           <img src={about} alt="about"/>

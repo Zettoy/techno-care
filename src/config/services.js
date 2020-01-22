@@ -3,19 +3,19 @@ export default [
     label: 'Computer Repair and Maintenance',
     pathname: '/services/computer-repair-and-maintenance',
     content: 'We repair any types of computers including Desktop PC, Laptop, Tablet computers. We can provide you software and hardware solutions at cheapest price.. Our main aim is to create a powerful web presence, online business processes or reduce your long-term IT costs,reduce paperwork by using online system. In addition we provide web design, web application, graphics design, domain name registration, networking and any hardware repairs.',
-    image: require('../assets/computer_repair.png')
+    image: require('../assets/computer_repair_and_maintenance.png')
   },
   {
     label: 'Web and Desktop Software Solution',
     pathname: '/service/web-and-desktop-software-solution',
     content: 'We repair any types of computers including Desktop PC, Laptop, Tablet computers. We can provide you software and hardware solutions at cheapest price. Our main aim is to create a powerful web presence, online business processes or reduce your long-term IT costs,reduce paperwork by using online system. In addition we provide web design, web application, graphics design, domain name registration, networking and any hardware repairs.',
-    image: require('../assets/software_solutions.png')
+    image: require('../assets/web_and_desktop_software_solution.png')
   },
   {
     label: 'Web Design and Development',
     pathname: '/services/web-design-and-development',
     content: 'We design/develop great web sites based on your requirement. We are enable to design and develop powerful web solutions for medium to enterprise level clients. Our main aim is to create a powerful web presence, online business processes or reduce your long-term IT costs,reduce paperwork .In today’s business scenario, a website has become essential and must have component for every company. If your company does not have an online presence, you are missing an essential component of technology. Websites are instrumental in implementing marketing strategies that help your company develop and become more visible online. But, that requires clean and good-looking designs.',
-    image: require('../assets/software_development.png')
+    image: require('../assets/web_design_and_development.png')
   },
   {
     label: 'Graphic Design',
@@ -40,6 +40,6 @@ export default [
     pathname: '/services/domain-name-registration',
     content: '\n' +
       'We provide the service to park the domain name for you and your site.New top-level domain names are now available for registration. Align your brand with hundreds of memorable ideas spanning generic & geographic namespaces. Be a pioneer in this exciting new era of domains today.',
-    image: require('../assets/domain_registration.png')
+    image: require('../assets/domain_name_registration.png')
   }
 ]

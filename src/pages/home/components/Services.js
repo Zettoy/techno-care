@@ -1,11 +1,11 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { createUseStyles } from "react-jss";
+import axios from "axios";
 
 import Container from "../../../util/Container";
 import Title from "../../../util/Title";
 import Paper from "../../../util/Paper";
-import services from "../../../config/services";
 
 const useStyles = createUseStyles({
   services: {
@@ -71,6 +71,24 @@ const useStyles = createUseStyles({
 });
 
 function Services({backgroundColor}) {
+  const [services, setServices] = useState([]);
+
+  useEffect(() => {
+    axios.get("/api/services")
+      .then(response => {
+        const serviceList = [];
+        response.data._embedded.services.forEach(service => {
+          serviceList.push({
+            label: service.title,
+            content: service.body,
+            pathname: '/services/' + service.title.toLowerCase().replace(/ /g, '-'),
+            image: require(`../../../assets/${service.title.toLowerCase().replace(/ /g, '_')}.png`)
+          });
+        });
+        setServices(serviceList);
+      });
+  }, []);
+
   const classes = useStyles();
 
   return (

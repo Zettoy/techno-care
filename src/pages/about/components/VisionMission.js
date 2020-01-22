@@ -1,10 +1,10 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { createUseStyles } from "react-jss";
+import axios from "axios";
 
 import Container from "../../../util/Container";
 import Title from "../../../util/Title";
 import Paper from "../../../util/Paper";
-import content from "../config/content";
 
 const useStyles = createUseStyles({
   body: {
@@ -36,25 +36,24 @@ const useStyles = createUseStyles({
 });
 
 function VisionMission({backgroundColor}) {
-  const classes = useStyles();
-  const data = [
-    {
-      title: 'Mission',
-      content: content.mission,
-      image: require(`../assets/mission.png`)
-    },
-    {
-      title: 'Vision',
-      content: content.vision,
-      image: require(`../assets/vision.png`)
-    },
-    {
-      title: 'Philosophy',
-      content: content.philosophy,
-      image: require(`../assets/philosophy.png`)
-    },
-  ];
+  const [contents, setContents] = useState([]);
 
+  useEffect(() => {
+    axios.get("/api/aboutPageTexts")
+      .then(response => {
+        const contentList = [];
+        response.data._embedded.aboutPageTexts.filter(item => item.title !== "About").forEach(response => {
+          contentList.push({
+            title: response.title,
+            content: response.body,
+            image: require(`../assets/${response.title.toLowerCase()}.png`)
+          });
+        });
+        setContents(contentList);
+      });
+  }, []);
+
+  const classes = useStyles();
 
   return (
     <Paper color={backgroundColor}>
@@ -64,7 +63,7 @@ function VisionMission({backgroundColor}) {
         </Title>
         <div className={classes.body}>
           <Paper elevation="2">
-            {data.map((item, key) => (
+            {contents.map((item, key) => (
               <div className={classes.section}
                    style={{backgroundImage: `url(${item.image})`}}
                    key={key}>
